@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+      <!-- before your module(*.nocache.js) loading  -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="pgu_geo/css/font-awesome-ie7.css">
+    <![endif]-->
+    <!-- your module(*.nocache.js) loading  -->
+  
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="Pgu_track.css">
+    
+    <title>Pgu track</title>
+    
+    <script type="text/javascript" src="/_ah/channel/jsapi"></script>
+    <script type="text/javascript">
+    
+     function pgu_track_onOpened() {
+        console.log('channel is opened!');   
+     }
+     
+     function pgu_track_onMessage(message) {
+         var msg = JSON.parse(message.data);
+         
+         pgu_track_channel_on_message(msg.type, msg.body);
+     }
+ 
+    function pgu_track_open_channel(token) {
+        var channel = new goog.appengine.Channel(token);
+        var handler = {
+          'onopen': pgu_track_onOpened,
+          'onmessage': pgu_track_onMessage,
+          'onerror': function() {},
+          'onclose': function() {}
+        };
+        var socket = channel.open(handler);
+        socket.onopen = pgu_track_onOpened;
+        socket.onmessage = pgu_track_onMessage;
+    }    
+    
+    </script>
+    
+    <script type="text/javascript" language="javascript" src="pgu_track/pgu_track.nocache.js"></script>
+  </head>
+  <body>
+    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+  </body>
+</html>

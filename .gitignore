@@ -1,0 +1,8 @@
+gwt-unitCache/
+war/pgu_track/
+war/WEB-INF/classes/
+war/WEB-INF/deploy/
+war/WEB-INF/lib/
+war/WEB-INF/appengine-generated/
+.settings/com.google.gwt.eclipse.core.prefs
+
